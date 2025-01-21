@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset = "UTF-*">
+    <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
+    <title>Property Price Estimator</title>
+    <link rel = "stylesheet" href = "{{ url_for('static', filename = 'style.css')}}">
+</head>
+<body>
+  <div class = "container">
+      <h1>Property Price Estimator</h1>
+      <form action = "/prediction" method = "POST">
+          <label for = "lotArea">Lot Area</label>
+          <input type = "number" id = "lotArea" name = "Lot Area" placeholder = "Enter lot area" required>
+
+          <label for = "totalSqft">Total Square Feet</label>
+          <input type = "number" id = "totalSqft" name = "TotalSQFT" placeholder = "Enter total sqft" required>
+
+          <label for = "totalBaths">Total Bathrooms</label>
+          <input type = "number" id = "totalBaths" name = "TotalBaths" placeholder = "Enter total baths" required>
+
+          <label for = "garageCars">Garage Cars</label>
+          <input type = "number" id = "garageCars" name = "Garage Cars" placeholder = "Enter garage cars" required>
+
+          <label for = "yearBuilt">Year Built</label>
+          <input type = "number" id = "yearBuilt" name = "Year Built" placeholder = "Enter year built" required>
+
+          <label for = "bedrooms">Number of Bedrooms</label>
+          <input type = "number" id = "bedrooms" name = "Bedroom AbvGr" placeholder = "Enter number of bedrooms" required>
+
+          <label for = "kitchens">Number of Kitchens</label>
+          <input type = "number" id = "kitchens" name = "Kitchen AbvGr" placeholder = "Enter number of kitchens" required>
+
+          <label for = "overallQual">Overall Quality (1-10)</label>
+          <input type = "number" id = "overallQual" name = "Overall Qual" placeholder = "Enter overall quality" required>
+
+          <button type="submit">Predict Price</button>
+      </form>
+      {%  if prediction %}
+      <div id = "result">{{ prediction }}</div>
+      {% endif %}
+  </div>
+</body>
+</html>
