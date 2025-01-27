@@ -13,7 +13,7 @@ data.fillna('None', inplace=True)
 # Encoding MS Subclass separately because of int values as a nominal category
 data['MS SubClass'] = data['MS SubClass'].astype('category')
 ms_subclass_dummies = pd.get_dummies(data['MS SubClass'], prefix='MS_SubClass', drop_first=True)
-data = pd.concat([data, ms_subclass_dummies], axis=1)
+data = pd.concat([data, ms_subclass_dummies.astype(int)], axis=1)
 data.drop(columns=['MS SubClass'], inplace=True)
 
 
@@ -60,7 +60,7 @@ missing_nominal_vars = [col for col in nominal_vars if col not in data.columns]
 nominal_dummies = pd.get_dummies(data[present_nominal_vars], prefix=present_nominal_vars, drop_first=True)
 
 # Concatenate dummies and drop original nominal columns
-data = pd.concat([data, nominal_dummies], axis=1)
+data = pd.concat([data, nominal_dummies.astype(int)], axis=1)
 data.drop(columns=present_nominal_vars, inplace=True)
 
 # Step 2: Ordinal encoding
@@ -70,4 +70,5 @@ for column, mapping in ordinal_vars.items():
     else:
         print(f"Warning: Column '{column}' not found in dataset. Skipping.")
 
-
+encoded_data = data
+print(encoded_data.dtypes)

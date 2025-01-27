@@ -2,6 +2,7 @@
 This python file's objective is to compound SalePrice's present value to 2024's future value
 and clean the data for model training
 """
+import pandas as pd
 
 from dataPrep.GrowthRate import growth_rate
 from dataPrep.GrowthRate import data
@@ -83,4 +84,7 @@ count = (data.columns == 'MS SubClass').sum()
 print(count)
 print(data.dtypes)
 data.to_csv('cleaned_data.csv', index=False)
+
+print(data['Year Remod/Add'].describe())
+
 

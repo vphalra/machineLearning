@@ -127,3 +127,32 @@ Banked contour (steep rise from street to building) has the smallest variance if
 There is a noticeably tight range where price is congested between; 
 there are no outliers breaching the threshold of approximately $560k.
 """
+
+import matplotlib.pyplot as plt
+
+
+
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Sample Data: Replace this with your actual DataFrame column
+# Example: sale_prices = data['SalePrice']
+import numpy as np
+np.random.seed(42)
+sale_prices = np.random.normal(loc=200000, scale=50000, size=1000)  # Example data
+
+# Plot the distribution of Sale Price
+plt.figure(figsize=(10, 6))
+sns.histplot(sale_prices, kde=True, bins=30, color="skyblue", edgecolor="black")
+
+# Adding titles and labels
+plt.title("Distribution of Sale Price", fontsize=16)
+plt.xlabel("Sale Price (USD)", fontsize=14)
+plt.ylabel("Frequency", fontsize=14)
+plt.xticks(fontsize=12)
+plt.yticks(fontsize=12)
+plt.grid(axis='y', linestyle='--', alpha=0.7)
+
+# Show the plot
+plt.tight_layout()
+plt.show()
